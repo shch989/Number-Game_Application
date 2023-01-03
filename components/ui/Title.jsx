@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 
-import Colors from '../utils/colors'
+import Colors from '../../utils/colors'
 
 function Title(props) {
   return (
