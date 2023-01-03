@@ -21,15 +21,11 @@ let minBoundary = 1
 let maxBoundary = 100
 
 function GameScreen(props) {
-  const initialGuess = generateRandomBetween(
-    1,
-    100,
-    props.userNumber
-  )
+  const initialGuess = generateRandomBetween(1, 100, props.userNumber)
   const [currentGuess, setCurrentGuess] = useState(initialGuess)
 
   useEffect(() => {
-    if(currentGuess === props.userNumber) {
+    if (currentGuess === props.userNumber) {
       props.onGameOver()
     }
   }, [currentGuess, props.userNumber, props.onGameOver])
@@ -63,14 +59,18 @@ function GameScreen(props) {
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Cart>
-        <InstructionText>Higher or lower?</InstructionText>
-        <View>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
-            +
-          </PrimaryButton>
+        <InstructionText style={styles.InstructionText}>Higher or lower?</InstructionText>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
+              -
+            </PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
+              +
+            </PrimaryButton>
+          </View>
         </View>
       </Cart>
       {/* <View>LOG ROUNDS</View> */}
@@ -85,5 +85,14 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     paddingTop: 44,
+  },
+  InstructionText: {
+    marginBottom: 12
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+  },
+  buttonContainer: {
+    flex: 1,
   },
 })

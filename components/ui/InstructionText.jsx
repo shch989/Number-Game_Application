@@ -4,7 +4,9 @@ import { View, Text, StyleSheet } from 'react-native'
 import Colors from '../../utils/colors'
 
 function InstructionText(props) {
-  return <Text style={styles.instructionText}>{props.children}</Text>
+  return (
+    <Text style={[styles.instructionText, props.style]}>{props.children}</Text>
+  )
 }
 
 export default InstructionText
